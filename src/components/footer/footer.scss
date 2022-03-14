@@ -1,0 +1,13 @@
+.app-footer {
+  padding: 20px;
+  min-height: 80px;
+  display: flex;
+  align-items: flex-end;
+
+  &__text {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1;
+    color: #110b0b33;
+  }
+}

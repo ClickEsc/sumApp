@@ -1,0 +1,51 @@
+$textMainColor: #000;
+$textSecondaryColor: rgb(95, 91, 91);
+
+.app-main {
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    margin: 0 0 20px;
+    font-size: 32px;
+    line-height: 1;
+    color: $textMainColor;
+  }
+  &__subtitle {
+    margin: 0 0 50px;
+    font-size: 24px;
+    line-height: 1;
+    color: $textSecondaryColor;
+  }
+  &__link {
+    width: 200px;
+    min-height: 60px;
+    font-size: 20px;
+    line-height: 1;
+    color: #794f08;
+    text-decoration: none;
+    background-color: #faecd5;
+    border: 1px solid #e5d6bd;
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale3d(1, 1, 1);
+    will-change: transform;
+    transition: all 0.3s ease-out;
+
+
+    &:hover, &:active {
+      backface-visibility: hidden;
+      -webkit-font-smoothing: subpixel-antialiased;
+      filter: blur(0);
+      -webkit-filter: blur(0);
+      -webkit-perspective: 1000px;
+      transform: perspective(1000px) scale(1.05) translateZ(0);
+    }
+  }
+}
