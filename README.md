@@ -2,19 +2,19 @@
 
 1. **Запуск приложения**
 
-    1. Клонировать репозиторий
+    :one: Клонировать репозиторий
       ```
       git clone https://github.com/ClickEsc/sumApp.git
       ```
-    2. Установить gatsby-cli для работы с gatsby через командную строку
+    :two: Установить gatsby-cli для работы с gatsby через командную строку
       ```
       npm install -g gatsby-cli
       ```
-    3. Установить зависимости 
+    :three: Установить зависимости 
       ```
       npm install
       ```
-    4. Запустить проект локально на localhost:8000/
+    :four: Запустить проект локально на localhost:8000/
       ```
       gatsby develop || npm run start
       ```
