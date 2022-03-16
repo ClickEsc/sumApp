@@ -19,7 +19,11 @@ const Step4 = (props) => {
       </Helmet>
       <h3 className="addition__title">{title}</h3>
       <AdditionTable withSumRow />
-      <Navigation hasPrevBtn handleGoBackBtnClick={handleGoBackBtnClick} prevBtnTitle="Вернуться к вводу данных" />
+      <Navigation
+        hasPrevBtn
+        handleGoBackBtnClick={handleGoBackBtnClick}
+        prevBtnTitle="Вернуться к вводу данных"
+      />
     </>
   )
 }

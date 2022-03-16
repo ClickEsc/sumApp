@@ -11,7 +11,6 @@ const Step3 = (props) => {
   const title = "Шаг 3: Расчет данных";
   
   const sumValues = () => {
-    console.log('STEP 3 | additionContext', additionContext);
     const values = inputValuesArr.map(item => item.value);
     const sum = values.reduce((prev, next) => prev + next);
     setAdditionContext({inputValuesArr: additionContext.inputValuesArr, sum: sum})

@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Caveat';
     src: url('Caveat-Regular.eot');
-    src: local('Caveat'), local('Caveat'),
+    src: local('Caveat Regular'), local('Caveat-Regular'),
         url('Caveat-Regular.eot?#iefix') format('embedded-opentype'),
         url('Caveat-Regular.woff2') format('woff2'),
         url('Caveat-Regular.woff') format('woff'),
