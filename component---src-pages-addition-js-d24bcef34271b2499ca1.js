@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksum_app=self.webpackChunksum_app||[]).push([[300],{7318:function(e,t,n){n.r(t);var a=n(7294),u=n(9499),c=(n(4349),n(7598)),p=n(7029),s=n(3174);t.default=function(){return a.createElement(c.Z,null,a.createElement(u.Router,{basepath:"https://clickesc.github.io"},a.createElement(p.Z,{path:"/addition",component:s.Z})))}}}]);
+//# sourceMappingURL=component---src-pages-addition-js-d24bcef34271b2499ca1.js.map

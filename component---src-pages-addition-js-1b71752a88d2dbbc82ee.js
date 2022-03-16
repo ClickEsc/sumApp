@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksum_app=self.webpackChunksum_app||[]).push([[300],{7318:function(e,t,c){c.r(t);var n=c(7294),s=c(9499),u=(c(4349),c(7598)),a=c(7029),p=c(3174);t.default=function(){return console.log("process.env.GATSBY_PUBLIC_URL","https://clickesc.github.io"),n.createElement(u.Z,null,n.createElement(s.Router,{basepath:"https://clickesc.github.io"},n.createElement(a.Z,{path:"/addition",component:p.Z})))}}}]);
+//# sourceMappingURL=component---src-pages-addition-js-1b71752a88d2dbbc82ee.js.map
