@@ -2,8 +2,8 @@ $textMainColor: #000;
 $textSecondaryColor: rgb(95, 91, 91);
 
 .app-main {
-  width: 100%;
-  height: calc(100vh - 80px);
+  margin: auto 0;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,12 +14,14 @@ $textSecondaryColor: rgb(95, 91, 91);
     font-size: 32px;
     line-height: 1;
     color: $textMainColor;
+    text-align: center;
   }
   &__subtitle {
     margin: 0 0 50px;
     font-size: 24px;
     line-height: 1;
     color: $textSecondaryColor;
+    text-align: center;
   }
   &__link {
     width: 200px;
@@ -40,6 +42,7 @@ $textSecondaryColor: rgb(95, 91, 91);
 
 
     &:hover, &:active {
+      cursor: pointer;
       backface-visibility: hidden;
       -webkit-font-smoothing: subpixel-antialiased;
       filter: blur(0);
@@ -47,5 +50,16 @@ $textSecondaryColor: rgb(95, 91, 91);
       -webkit-perspective: 1000px;
       transform: perspective(1000px) scale(1.05) translateZ(0);
     }
+  }
+}
+
+@media (max-width: 400px) {
+  .app-main__subtitle {
+    max-width: 70%;
+  }
+  .app-main__title-span {
+    margin-bottom: 20px;
+    width: 100%;
+    display: inline-block;
   }
 }
