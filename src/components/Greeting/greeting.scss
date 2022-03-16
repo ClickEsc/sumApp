@@ -1,0 +1,22 @@
+.greeting {
+  padding-right: 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 50%;
+
+  &__emoji {
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 790px) {
+  .greeting {
+    display: none;
+  }
+}
