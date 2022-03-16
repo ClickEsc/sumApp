@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunksum_app=self.webpackChunksum_app||[]).push([[300],{7318:function(e,t,n){n.r(t);var a=n(7294),u=n(9499),p=n(4349),c=n(7598),r=n(7029),l=n(3174);t.default=function(){return a.createElement(c.Z,null,a.createElement(u.Router,{basepath:p.LJ},a.createElement(r.Z,{path:"/addition",component:l.Z})))}}}]);
+//# sourceMappingURL=component---src-pages-addition-js-cf00adb8c71f9adc4389.js.map
