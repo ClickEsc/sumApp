@@ -1,8 +1,12 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   pathPrefix: "/sumApp",
   siteMetadata: {
       title: `new`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://clickesc.github.io/sumApp`
   },
   plugins: [
     "gatsby-plugin-sass",

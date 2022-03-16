@@ -48,9 +48,11 @@
 
     .fa-eye,
     .fa-eye-slash {
+      height: 16px;
+      width: 16px;
       color: #b8b0b0;
       position: absolute;
-      top: 26px;
+      top: 27px;
       right: 5px;
 
       &:hover {

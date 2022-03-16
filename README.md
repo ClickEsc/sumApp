@@ -36,6 +36,7 @@
       ├── index.css
     ├── .gitignore
     ├── gatsby-config.js
+    ├── gatsby-node.js    
     ├── package-lock.json
     ├── package.json
     └── README.md

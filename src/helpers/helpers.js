@@ -1,4 +1,5 @@
 export const isBrowser = typeof window !== "undefined";
+export const basepath = process.env.NODE_ENV === "development" ? "/" : "/sumApp";
 
 export const checkInputNumericOnly = (e) => {
   // Разрешаем: backspace, delete, tab и escape

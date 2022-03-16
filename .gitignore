@@ -25,5 +25,5 @@ build
 /coverage
 
 # misc
-.env
+.env*
 .eslintcache
