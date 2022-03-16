@@ -44,6 +44,11 @@
       align-items: flex-end;
     }
 
+    &__form-error {
+      margin: 20px 0 10px;
+      color: #ff0000be;
+    }
+
     &__list {
       margin: 0;
       padding-left: 0;

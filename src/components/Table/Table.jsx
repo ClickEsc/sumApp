@@ -143,8 +143,6 @@ const AdditionTable = ({withSumRow}) => {
     }
   }, [isFilterInputRowVisible]);
 
-  console.log('step', step)
-
   return (
     <>
       <table className="table">

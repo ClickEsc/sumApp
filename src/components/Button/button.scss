@@ -31,6 +31,8 @@
 
   &:disabled {
     opacity: 0.4;
+    color: #8f8b85;
+    background-color: #908e8b36;
     
     &:hover {
       cursor: default;

@@ -28,8 +28,6 @@ const LoginForm = () => {
   const handleUserInput = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(name, value)
-
     const validationResults = validateInput(name, value);
     setUserData({...userData, [name]: value, ...validationResults});
   }
