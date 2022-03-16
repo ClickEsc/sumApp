@@ -14,3 +14,7 @@ body {
 body {
   background: radial-gradient(40% 50%, #FAECD5, #CAE4D8);
 }
+
+button:hover {
+    cursor: pointer;
+}
