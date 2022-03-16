@@ -1,0 +1,111 @@
+.app-page-wrapper {
+  margin: auto 0 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__title {
+    margin: 0 0 30px;
+    font-size: 22px;
+    line-height: 1;
+  }
+
+  .app-form {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__field-wrapper {
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    &__label {
+      font-size: 18px;
+      line-height: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__input {
+      margin-top: 5px;
+      font-size: 16px;
+      line-height: 1;
+
+      &::-ms-reveal {
+        width : 0;
+        height: 0;
+      }
+    }
+
+    .fa-eye,
+    .fa-eye-slash {
+      color: #b8b0b0;
+      position: absolute;
+      top: 26px;
+      right: 5px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    &__error {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1;
+      color: rgba(255, 0, 0, 0.747);
+      position: absolute;
+      top: 57px;
+      left: 0;
+    }
+
+    &__submit {
+      margin: 80px auto 0;
+      width: 100%;
+      min-height: 60px;
+      font-size: 22px;
+      line-height: 1;
+      color: #794f08;
+      font-family: 'Caveat', sans-serif;
+      text-decoration: none;
+      background-color: #faecd5;
+      border: 1px solid #e5d6bd;
+      border-radius: 10px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-transform: scale3d(1, 1, 1);
+      transform: scale3d(1, 1, 1);
+      will-change: transform;
+      transition: all 0.3s ease-out;
+
+      &:hover, &:active {
+        cursor: pointer;
+        backface-visibility: hidden;
+        -webkit-font-smoothing: subpixel-antialiased;
+        filter: blur(0);
+        -webkit-filter: blur(0);
+        -webkit-perspective: 1000px;
+        transform: perspective(1000px) scale(1.05) translateZ(0);
+      }
+
+      &:disabled {
+        opacity: 0.4;
+        
+        &:hover {
+          cursor: default;
+          transform: none;
+        }
+      }
+    }
+  }
+}
