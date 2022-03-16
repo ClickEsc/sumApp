@@ -8,7 +8,8 @@ const Navigation = ({
   handleGoBackBtnClick, 
   handleSubmitBtnClick,
   prevBtnTitle,
-  nextBtnDescription
+  nextBtnDescription,
+  nextBtnDisabled
 }) => {
   return (
     <div className="navigation">
@@ -17,7 +18,7 @@ const Navigation = ({
       </div>}
       {hasNextBtn && <div className="navigation__wrapper">
         <p>{nextBtnDescription}</p>
-        <Button role="next" title="Продолжить" onClick={handleSubmitBtnClick} />
+        <Button role="next" title="Продолжить" onClick={handleSubmitBtnClick} disabled={nextBtnDisabled} />
       </div>}
     </div>
   )

@@ -3,7 +3,7 @@ import Helmet from "react-helmet";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {checkInputNumericOnly} from '../../helpers/helpers';
-import { AdditionContext } from "../../store/additionContext";
+import {AdditionContext} from "../../store/additionContext";
 import './addition.scss';
 import Navigation from "../Navigation/Navigation";
 
@@ -12,6 +12,11 @@ const Step1 = (props) => {
   const [inputList, setInputList] = useState([]);
   const [inputNum, setInputNum] = useState(0);
   const [inputValuesArr, setInputValuesArr] = useState([]);
+  const [isInputTrigger, setIsInputTrigger] = useState(false);
+  const [isInputErrors, setIsInputErrors] = useState(false);
+  const [isNextBtnDisabled, setIsNextBtnDisabled] = useState(true);
+  const [errorText, setErrorText] = useState('');
+  const [requiredInputValues, setRequiredInputValues] = useState({value1: '', value2: ''});
   const listRef = useRef();
   const title = "Шаг 1: Ввод данных";
 
@@ -21,16 +26,17 @@ const Step1 = (props) => {
     for (let i = 0; i < inputNodes.length; i++) {
       values.push(Number(inputNodes[i].childNodes[0].lastChild.value));
     }
-    console.log(values)
     values.forEach((value, index) => {
       inputValuesArr.push({id: index + 1, value})
     })
-    // inputValuesArr.push({id: e.target.id, value});
     setInputValuesArr([...inputValuesArr])
   }
 
   const handleAddBtnClick = () => {
-    setInputNum(inputNum + 1)
+    if (inputNum >= 2) {
+      addInputNode(inputNum + 1);
+      setInputNum(inputNum + 1);
+    }
   }
 
   const handleSubmitBtnClick = (e) => {
@@ -40,13 +46,33 @@ const Step1 = (props) => {
     setAdditionContext({inputValuesArr: inputValuesArr});
   }
 
+  const checkHasValue = (e) => {
+    if (e.target) {
+      if (e.target.value && e.target.value.startsWith(0)) {
+        e.target.value = '';
+        setErrorText('Введите корректное значение');
+      }
+      const id = e.target.attributes.id.value;
+      Object.assign(requiredInputValues, {[`value${id}`]: e.target.value});
+      setRequiredInputValues({...requiredInputValues});
+      setIsInputTrigger(!isInputTrigger);
+    }
+  }
+
   const addInputNode = (num) => {
     for (let i = inputList.length; i < num; i++) {
       inputList.push(
         <li key={i} className="addition__list-item">
           <label className="addition__label" htmlFor={i+1}>
             Число {i+1}
-            <input className="addition__input" min="1" id={i+1} type="text" required={i === 0 || i === 1 ? true : false} onKeyDown={checkInputNumericOnly} />
+            <input
+              id={i+1}
+              className="addition__input"
+              type="text" 
+              required={i === 0 || i === 1 ? true : false}
+              onKeyDown={checkInputNumericOnly}
+              onChange={checkHasValue} 
+            />
           </label>
         </li>
       );
@@ -55,14 +81,28 @@ const Step1 = (props) => {
 
   useEffect(() => {
     setInputNum(2);
-    addInputNode(2)
-  }, [])
+    addInputNode(2);
+  }, []);
 
   useEffect(() => {
-    if (inputNum >= 2) {
-      addInputNode(inputNum + 1)
+    if (isInputTrigger) {
+      if (isInputErrors) {
+        setErrorText('Введите первые два значения');
+        setIsNextBtnDisabled(true);
+      } else {
+        setErrorText('');
+        setIsNextBtnDisabled(false);
+      }
     }
-  }, [inputNum])
+  }, [isInputTrigger, isInputErrors]);
+
+  useEffect(() => {
+    if (requiredInputValues.value1 && requiredInputValues.value2) {
+      setIsInputErrors(false);
+    } else {
+      setIsInputErrors(true);
+    }
+  }, [requiredInputValues]);
 
   return (
     <>
@@ -71,6 +111,7 @@ const Step1 = (props) => {
       </Helmet>
       <h3 className="addition__title">{title}</h3>
         <form className="addition__form">
+          <p className="addition__form-error">{errorText}</p>
           <ul ref={listRef} className="addition__list">
             {inputList}
           </ul>
@@ -85,7 +126,8 @@ const Step1 = (props) => {
           <Navigation
             hasNextBtn
             handleSubmitBtnClick={handleSubmitBtnClick} 
-            nextBtnDescription="Перейти к подтверждению данных" 
+            nextBtnDescription="Перейти к подтверждению данных"
+            nextBtnDisabled={isNextBtnDisabled}
           />
         </form> 
     </>
