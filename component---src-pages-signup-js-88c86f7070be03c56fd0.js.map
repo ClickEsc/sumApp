@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-signup-js-88c86f7070be03c56fd0.js","mappings":"4HAQA,UANmB,WACjB,OACE","sources":["webpack://sum-app/./src/pages/signup.js"],"sourcesContent":["import * as React from \"react\";\r\n\r\nconst SignupPage = () => {\r\n  return (\r\n    <div></div>\r\n  )\r\n}\r\n\r\nexport default SignupPage"],"names":[],"sourceRoot":""}
