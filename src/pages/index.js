@@ -6,7 +6,6 @@ import Main from "../components/Main/Main";
 import LoginForm from "../components/LoginForm/LoginForm";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import Addition from "../components/Addition/Addition";
-import { basepath } from "../helpers/helpers";
 import '../assets/fonts/Caveat/stylesheet.css';
 import '../index.css';
 
