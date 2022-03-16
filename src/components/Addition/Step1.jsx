@@ -1,21 +1,32 @@
-import React, {useState, useEffect, useContext} from "react";
+import React, {useState, useEffect, useContext, useRef} from "react";
+import Helmet from "react-helmet";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPlus, faArrowRight} from '@fortawesome/free-solid-svg-icons'
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {checkInputNumericOnly} from '../../helpers/helpers';
 import { AdditionContext } from "../../store/additionContext";
 import './addition.scss';
+import Navigation from "../Navigation/Navigation";
 
 const Step1 = (props) => {
-  const additionContext = useContext(AdditionContext);
+  const [additionContext, setAdditionContext] = useContext(AdditionContext);
   const [inputList, setInputList] = useState([]);
   const [inputNum, setInputNum] = useState(0);
-  const [inputValuesObj, setInputValuesObj] = useState({});
-  const [sum, setSum] = useState(0);
+  const [inputValuesArr, setInputValuesArr] = useState([]);
+  const listRef = useRef();
+  const title = "Шаг 1: Ввод данных";
 
-  const handleChangeInputValue = (e) => {
-    const value = Number(e.target.value);
-    const newValuesObj = Object.assign(inputValuesObj, {[e.target.id]: value});
-    setInputValuesObj(newValuesObj)
+  const handleInputValues = () => {
+    const inputNodes = listRef.current.childNodes;
+    const values = [];
+    for (let i = 0; i < inputNodes.length; i++) {
+      values.push(Number(inputNodes[i].childNodes[0].lastChild.value));
+    }
+    console.log(values)
+    values.forEach((value, index) => {
+      inputValuesArr.push({id: index + 1, value})
+    })
+    // inputValuesArr.push({id: e.target.id, value});
+    setInputValuesArr([...inputValuesArr])
   }
 
   const handleAddBtnClick = () => {
@@ -24,23 +35,18 @@ const Step1 = (props) => {
 
   const handleSubmitBtnClick = (e) => {
     e.preventDefault();
-    sumValues();
+    handleInputValues()
     props.onSubmit();
-    additionContext.numbersArr = Object.values(inputValuesObj);
-  }
-
-  const sumValues = () => {
-    const sum = Object.values(inputValuesObj).reduce((prev, next) => prev + next);
-    console.log('sum', sum)
+    setAdditionContext({inputValuesArr: inputValuesArr});
   }
 
   const addInputNode = (num) => {
     for (let i = inputList.length; i < num; i++) {
       inputList.push(
         <li key={i} className="addition__list-item">
-          <label className="addition__label" htmlFor={`number${i+1}`}>
+          <label className="addition__label" htmlFor={i+1}>
             Число {i+1}
-            <input className="addition__input" id={`number${i+1}`} type="text" required={i === 0 || i === 1 ? true : false} onChange={handleChangeInputValue} onKeyDown={checkInputNumericOnly} />
+            <input className="addition__input" min="1" id={i+1} type="text" required={i === 0 || i === 1 ? true : false} onKeyDown={checkInputNumericOnly} />
           </label>
         </li>
       );
@@ -59,35 +65,30 @@ const Step1 = (props) => {
   }, [inputNum])
 
   return (
-    <div>
-      <h3 className="addition__title">Шаг 1: Ввод данных</h3>
-        <form>
-        <ul className="addition__list">
-          {inputList}
-        </ul>
-        <button
-          type="button"
-          className="addition__button addition__button_add" 
-          onClick={handleAddBtnClick}
-        >
-          <FontAwesomeIcon className="addition__icon" icon={faPlus} />
-          Добавить поле ввода
-        </button>
-
-        <div className="addition__next">
-          <p className="addition__next-description">Перейти к подтверждению данных</p>
+    <>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
+      <h3 className="addition__title">{title}</h3>
+        <form className="addition__form">
+          <ul ref={listRef} className="addition__list">
+            {inputList}
+          </ul>
           <button
-            type="submit"
-            className="addition__button addition__button_submit"
-            onClick={handleSubmitBtnClick}
-            // disabled
+            type="button"
+            className="addition__button addition__button_add" 
+            onClick={handleAddBtnClick}
           >
-              Шаг 2
-              <FontAwesomeIcon className="addition__icon" icon={faArrowRight} />
+            <FontAwesomeIcon className="addition__icon" icon={faPlus} />
+            Добавить поле ввода
           </button>
-        </div>
-        </form>
-    </div>
+          <Navigation
+            hasNextBtn
+            handleSubmitBtnClick={handleSubmitBtnClick} 
+            nextBtnDescription="Перейти к подтверждению данных" 
+          />
+        </form> 
+    </>
   )
 }
 
