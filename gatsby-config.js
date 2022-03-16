@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/sumApp",
   siteMetadata: {
       title: `new`,
     siteUrl: `https://www.yourdomain.tld`

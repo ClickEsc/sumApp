@@ -1,3 +1,5 @@
+export const isBrowser = typeof window !== "undefined";
+
 export const checkInputNumericOnly = (e) => {
   // Разрешаем: backspace, delete, tab и escape
   if (e.keyCode === 46 || e.keyCode === 8 || e.keyCode === 9 || e.keyCode === 27 ||
